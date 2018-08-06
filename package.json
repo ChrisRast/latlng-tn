@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "serve": "./node_modules/.bin/parcel index.html",
+    "build": "./node_modules/.bin/parcel build index.html -d docs --no-source-maps"
+  },
+  "name": "latlng-tn",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "lodash-es": "^4.17.10",
+    "parcel": "^1.9.7"
+  }
+}
