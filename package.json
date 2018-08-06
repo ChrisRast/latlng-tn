@@ -1,7 +1,7 @@
 {
   "scripts": {
     "serve": "./node_modules/.bin/parcel index.html",
-    "build": "./node_modules/.bin/parcel build index.html -d docs --no-source-maps"
+    "build": "./node_modules/.bin/parcel build index.html -d docs --no-source-maps --public-url /latlng-tn/"
   },
   "name": "latlng-tn",
   "version": "1.0.0",
