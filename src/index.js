@@ -5,6 +5,14 @@ window.onload = () => {
 	const params = {
 		format: "json",
 		countrycode: 'tn',
+		viewbox: [
+			"30.230236",
+			"7.5219807",
+			"37.7612052",
+			"11.8801133"
+		],
+		bounded: 1,
+		"accept-language": 'fr'
 	};
 	const parse = document.getElementById('parse');
 	const download = document.getElementById('download');
@@ -41,17 +49,19 @@ window.onload = () => {
 			const callback = () => {
 				status.innerText = 'Creating CSV...';
 
-				let csv = result.map((aResult, index) => {
-					const label = data[ index ];
+				let csv = result.map(({
+					res,
+					line
+				}) => {
 					const [
 						{
 							lat = 'NA',
 							lon: lng = 'NA',
 						} = {}
-					] = aResult.data;
+					] = res.data;
 					if (lat === 'NA' || lng === 'NA') countNA++;
 
-					return `\n${label},${lat},${lng}`;
+					return `\n${line},${lat},${lng}`;
 				});
 
 				csv.unshift(`${Array(firstLineNbValues).join(',')},lat,lng`);
@@ -83,7 +93,10 @@ window.onload = () => {
 							key: key.value
 						}
 					}).then((res) => {
-						result.push(res);
+						result.push({
+							res,
+							line
+						});
 					}).catch((error) => {
 						countNA++;
 					}).finally(() => {
