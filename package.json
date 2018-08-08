@@ -1,7 +1,7 @@
 {
   "scripts": {
     "serve": "./node_modules/.bin/parcel index.html",
-    "build": "./node_modules/.bin/parcel build index.html -d docs --no-source-maps --public-url /latlng-tn/"
+    "build": "rm -r ./docs/ && ./node_modules/.bin/parcel build index.html -d docs --no-source-maps --public-url /latlng-tn/"
   },
   "name": "latlng-tn",
   "version": "1.0.0",
@@ -12,5 +12,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "parcel": "^1.9.7"
-  }
+  },
+  "repository": "https://github.com/ChrisRast/latlng-tn.git",
+  "author": "Christophe Rast"
 }

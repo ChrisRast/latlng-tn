@@ -1,33 +1,58 @@
 <html>
 
 <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
 </head>
 
 <body>
-    <div id="app">
-        <div id>
-            <label>
-                Upload a txt file with on each line the address you want to search. Nothing else, nothing more.
-                <input type="file" id="input" accept="text/plain">
-            </label>
-        </div>
-        <div>
-            <a href="" id="download" download="data.csv">Click to parse the file...</a>
-            <div>
-                <strong>Status:</strong>
-                <div id="status"></div>
-            </div>
-            <div>
-                <strong>Result:</strong>
-                <div>
-                    <code id="result"></code>
-                </div>
-            </div>
-        </div>
+	<div id="app">
+		<h1>Bulk Geocoding</h1>
 
-        <script src="src/index.js"></script>
+		<ol>
+			<li>
+				Get your API key at
+				<a href="https://locationiq.com/" target="_blank" rel="noopened noreferrer">locationiq.com</a>
+			</li>
+			<li>
+
+				<label>
+					Upload a txt file with on each line the address you want to geocode.
+					<div>
+						<input type="file" id="input" accept="text/plain">
+					</div>
+				</label>
+			</li>
+			<li>
+				<label>Enter you API key:
+					<input id="key" type="text">
+				</label>
+			</li>
+			<li>
+				<label>
+					Number of requests per minute allowed by your plan/key (default 60):
+					<input id="rate" type="text" value="60">
+				</label>
+			</li>
+		</ol>
+		<div>
+			<button disabled="true" id="parse">Parse the file</button>
+			<div>
+				<strong>Status:</strong>
+				<div id="status"></div>
+			</div>
+			<div>
+				<a href="" id="download" download="data.csv"></a>
+			</div>
+			<div>
+				<strong>Result:</strong>
+				<div>
+					<code id="result"></code>
+				</div>
+			</div>
+		</div>
+
+		<script src="src/index.js"></script>
 </body>
 
 </html>
