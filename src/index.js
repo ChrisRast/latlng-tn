@@ -6,12 +6,13 @@ window.onload = () => {
 		format: "json",
 		countrycode: 'tn',
 		viewbox: [
-			"30.230236",
 			"7.5219807",
+			"30.230236",
+			"11.8801133",
 			"37.7612052",
-			"11.8801133"
-		],
+		].join(','),
 		bounded: 1,
+		limit: 1,
 		"accept-language": 'fr'
 	};
 	const parse = document.getElementById('parse');
@@ -28,6 +29,7 @@ window.onload = () => {
 	}
 	parse.onclick = (fetchElemEvent) => {
 		fetchElemEvent.preventDefault();
+		download.innerText = '';
 		status.innerText = 'Parsing file...';
 		const reader = new FileReader();
 		reader.onload = (readerEvent) => {
@@ -57,14 +59,15 @@ window.onload = () => {
 						{
 							lat = 'NA',
 							lon: lng = 'NA',
+							display_name
 						} = {}
 					] = res.data;
 					if (lat === 'NA' || lng === 'NA') countNA++;
 
-					return `\n${line},${lat},${lng}`;
+					return `\n${line},${lat},${lng},${display_name}`;
 				});
 
-				csv.unshift(`${Array(firstLineNbValues).join(',')},lat,lng`);
+				csv.unshift(`${Array(firstLineNbValues).join(',')},lat,lng,display_name`);
 				const finalTxt = csv.join('');
 				download.onclick = (dlElemEvent) => {
 					dlElemEvent.target.href = 'data:text/plain;charset=utf-8,'
